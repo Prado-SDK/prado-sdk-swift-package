@@ -1,0 +1,1 @@
+# core-sdk-swift-package
