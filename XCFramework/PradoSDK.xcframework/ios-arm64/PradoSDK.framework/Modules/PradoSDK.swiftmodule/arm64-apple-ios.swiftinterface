@@ -1,0 +1,252 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.0.3 effective-5.10 (swiftlang-6.0.3.1.10 clang-1600.0.30.1)
+// swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name PradoSDK
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface
+import AVFAudio
+import AdSupport
+import AppTrackingTransparency
+import CoreTelephony
+import CryptoKit
+import Foundation
+import JavaScriptCore
+@_exported import PradoSDK
+import StoreKit.SKStoreProductViewController
+import StoreKit
+import Swift
+import SystemConfiguration
+import UIKit
+import WebKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@objc public enum BannerPosition : Swift.Int {
+  case top_center, bottom_center, top_left, top_right, bottom_left, bottom_right, none
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc final public class ToastMessage : ObjectiveC.NSObject {
+  @objc public static func show(message: Swift.String)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(Prado) public class Prado : ObjectiveC.NSObject {
+  @objc public static let instance: PradoSDK.Prado
+  @objc public func initialize(publisherID: Swift.String, securityToken: Swift.String, delegate: any PradoSDK.PradoInitDelegate)
+  @objc public static func suppressSKANWarnings()
+  @objc public static func getSdkVersion() -> Swift.String
+  @objc public func isSDKInitialized() -> Swift.Bool
+  @objc public static func setExtensionType(_ type: Swift.String, version: Swift.String)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers final public class StringUtils {
+  public static func convertJSONStringToDictionary(json: Swift.String?) -> [Swift.String : Swift.AnyObject]?
+  @objc deinit
+}
+@objc public protocol PradoInitDelegate : PradoSDK.SDKInitDelegate {
+}
+@objc public protocol PradoRewardedDelegate {
+  @objc func onRewardedAdLoaded(pradoRewardedAd: PradoSDK.PradoRewardedAd)
+  @objc func onRewardedAdFailedToLoad(pradoError: PradoSDK.PradoError)
+  @objc func onRewardedAdShown(pradoRewardedAd: PradoSDK.PradoRewardedAd)
+  @objc func onRewardedAdFailedToShow(pradoRewardedAd: PradoSDK.PradoRewardedAd, pradoError: PradoSDK.PradoError)
+  @objc func onRewardReceived(pradoRewardedAd: PradoSDK.PradoRewardedAd)
+  @objc func onRewardedImpression(pradoRewardedAd: PradoSDK.PradoRewardedAd)
+  @objc func onRewardedAdClosed(pradoRewardedAd: PradoSDK.PradoRewardedAd)
+}
+@objc public protocol PradoInterstitialDelegate {
+  @objc func onInterstitialAdLoaded(pradoInterstitialAd: PradoSDK.PradoInterstitialAd)
+  @objc func onInterstitialAdFailedToLoad(pradoError: PradoSDK.PradoError)
+  @objc func onInterstitialAdShown(pradoInterstitialAd: PradoSDK.PradoInterstitialAd)
+  @objc func onInterstitialAdFailedToShow(pradoInterstitialAd: PradoSDK.PradoInterstitialAd, pradoError: PradoSDK.PradoError)
+  @objc func onInterstitialImpression(pradoInterstitialAd: PradoSDK.PradoInterstitialAd)
+  @objc func onInterstitialAdClosed(pradoInterstitialAd: PradoSDK.PradoInterstitialAd)
+}
+@objc public protocol PradoBannerDelegate {
+  @objc func onBannerAdLoaded(pradoBannerView: PradoSDK.PradoBannerView)
+  @objc func onBannerAdFailedToLoad(pradoBannerView: PradoSDK.PradoBannerView, error: PradoSDK.PradoError)
+  @objc func onBannerAdShown(pradoBannerView: PradoSDK.PradoBannerView)
+  @objc func onBannerAdFailedToShow(pradoBannerView: PradoSDK.PradoBannerView, error: PradoSDK.PradoError)
+  @objc func onBannerAdImpression(pradoBannerView: PradoSDK.PradoBannerView)
+  @objc func onBannerAdClosed(pradoBannerView: PradoSDK.PradoBannerView)
+}
+@_inheritsConvenienceInitializers @objc(TestUtils) public class TestUtils : ObjectiveC.NSObject {
+  public static let testBridge: PradoSDK.TestUtils.TestBridge
+  @dynamicMemberLookup public struct TestBridge {
+    public subscript(dynamicMember member: Swift.String) -> Any {
+      get
+    }
+  }
+  public enum Environment {
+    case production(sdk: PradoSDK.SDKType)
+    case qa(sdk: PradoSDK.SDKType)
+    case ext_qa(sdk: PradoSDK.SDKType)
+    case dev(sdk: PradoSDK.SDKType)
+    public static func allCases(sdk: PradoSDK.SDKType) -> [PradoSDK.TestUtils.Environment]
+    public var info: (label: Swift.String, envUrl: Swift.String, waterfallUrl: Swift.String, testWaterfallUrl: Swift.String) {
+      get
+    }
+  }
+  public static func getEnvironment(sdkString: Swift.String, environmentString: Swift.String) -> PradoSDK.TestUtils.Environment
+  public static func getSDKLabels() -> [Swift.String]
+  public static func getEnvLabels(sdk: PradoSDK.SDKType) -> [Swift.String]
+  public static func getCurrentSDKType() -> PradoSDK.SDKType
+  public static func setCurrentSDKType(sdk: PradoSDK.SDKType)
+  public static func isKidoz() -> Swift.Bool
+  @objc public static func getEnvApiUrl() -> Swift.String?
+  public static func setEnvApiUrl(apiUrl: Swift.String)
+  @objc public static func getOverrideWaterfallUrl() -> Swift.String?
+  public static func setOverrideWaterfallUrl(waterfallUrl: Swift.String?)
+  public static func getTestWaterfallUrl() -> Swift.String?
+  public static func setTestWaterfallUrl(waterfallUrl: Swift.String?)
+  public static func isRTBTestMode() -> Swift.Bool
+  public static func setRTBTestMode(isRTBTestMode: Swift.Bool)
+  @objc public static func setEnvironment(sdkTypeStr: Swift.String, environmentStr: Swift.String)
+  @objc public static func getBundleVersion() -> Swift.String
+  public static func setEnvironment(environment: PradoSDK.TestUtils.Environment)
+  @objc public static func setCampaignIds(campaignIds: Swift.String?)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public protocol SDKInitDelegate {
+  @objc func onInitSuccess()
+  @objc func onInitError(_ error: Swift.String)
+}
+@_hasMissingDesignatedInitializers @objc(PradoError) public class PradoError : ObjectiveC.NSObject, Swift.Error {
+  @objc public var errorCode: Swift.Int
+  @objc public var message: Swift.String
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+}
+public enum SDKType : Swift.String, Swift.CaseIterable {
+  case kidoz
+  case prado
+  public var info: (label: Swift.String, envUrl: Swift.String, analyticsUrl: Swift.String) {
+    get
+  }
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [PradoSDK.SDKType]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [PradoSDK.SDKType] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(PradoRewardedAd) public class PradoRewardedAd : ObjectiveC.NSObject {
+  @objc public static func load(delegate: any PradoSDK.PradoRewardedDelegate)
+  @objc public static func load(bid: PradoSDK.PradoBid, delegate: any PradoSDK.PradoRewardedDelegate)
+  @objc public func show(viewController: UIKit.UIViewController)
+  @objc public func isLoaded() -> Swift.Bool
+  @objc public static func requestBid(delegate: any PradoSDK.PradoBidRequestDelegate)
+  @objc public static func getSignal() -> Swift.String?
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(PradoBannerView) @_Concurrency.MainActor @preconcurrency public class PradoBannerView : PradoSDK.KPBannerView {
+  @objc @_Concurrency.MainActor @preconcurrency public func setDelegate(delegate: any PradoSDK.PradoBannerDelegate)
+  @objc @_Concurrency.MainActor @preconcurrency public var delegate: (any PradoSDK.PradoBannerDelegate)?
+  @objc @_Concurrency.MainActor @preconcurrency public static func requestBid(delegate: any PradoSDK.PradoBidRequestDelegate)
+  @objc @_Concurrency.MainActor @preconcurrency public static func getSignal() -> Swift.String?
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc @_Concurrency.MainActor @preconcurrency public class KPBannerView : UIKit.UIView {
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public init()
+  @objc @_Concurrency.MainActor @preconcurrency public func setAutoShow(to autoShow: Swift.Bool)
+  @objc @_Concurrency.MainActor @preconcurrency public func load()
+  @objc @_Concurrency.MainActor @preconcurrency public func load(_ bid: PradoSDK.KPBid)
+  @objc @_Concurrency.MainActor @preconcurrency public func show()
+  @objc @_Concurrency.MainActor @preconcurrency public func setBannerPosition(_ bannerPosition: PradoSDK.BannerPosition)
+  @objc @_Concurrency.MainActor @preconcurrency public func close()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public var isHidden: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func didMoveToWindow()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(PradoInterstitialAd) public class PradoInterstitialAd : ObjectiveC.NSObject {
+  @objc public static func load(delegate: any PradoSDK.PradoInterstitialDelegate)
+  @objc public static func load(bid: PradoSDK.PradoBid, delegate: any PradoSDK.PradoInterstitialDelegate)
+  @objc public func show(viewController: UIKit.UIViewController)
+  @objc public func isLoaded() -> Swift.Bool
+  @objc public static func requestBid(delegate: any PradoSDK.PradoBidRequestDelegate)
+  @objc public static func getSignal() -> Swift.String?
+  @objc deinit
+}
+@objc public protocol PradoBidRequestDelegate {
+  @objc(onPradoBidResponse:) func onBidResponse(_ bid: PradoSDK.PradoBid)
+  @objc(onPradoError:) func onError(_ error: PradoSDK.PradoError)
+}
+@_inheritsConvenienceInitializers @objc(PlistUtil) public class PlistUtil : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(PradoBid) public class PradoBid : PradoSDK.KPBid {
+  override public init(bidResponse: Swift.String)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc final public class UIUtils : ObjectiveC.NSObject {
+  @objc public static func topViewController() -> UIKit.UIViewController
+  public static func visibleController() -> UIKit.UIViewController?
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers public class KPError : ObjectiveC.NSObject, Swift.Error {
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(KPBid) public class KPBid : ObjectiveC.NSObject {
+  public var id: Swift.String {
+    get
+  }
+  public var price: Swift.Double {
+    get
+  }
+  public var currency: Swift.String {
+    get
+  }
+  public var adType: Swift.String {
+    get
+  }
+  public init(bidResponse: Swift.String)
+  @objc deinit
+  @objc public func isExpired() -> Swift.Bool
+  @objc public func expirationDate() -> Foundation.Date?
+  public func confirmWin(nextHighestPrice: Swift.Double)
+  public func confirmLoss(winningPrice: Swift.Double, lossReason: Swift.Int)
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  public enum LostReason : Swift.Int, Swift.Codable {
+    case impressionOpportunityExpired
+    case missingBidPrice
+    case missingMinimumCreativeApprovalData
+    case bidBelowAuctionFloor
+    case bidBelowDealFloor
+    case lostToHigherBid
+    case lostToPMPBid
+    case buyerSeatBlocked
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+}
+extension PradoSDK.BannerPosition : Swift.Equatable {}
+extension PradoSDK.BannerPosition : Swift.Hashable {}
+extension PradoSDK.BannerPosition : Swift.RawRepresentable {}
+extension PradoSDK.SDKType : Swift.Equatable {}
+extension PradoSDK.SDKType : Swift.Hashable {}
+extension PradoSDK.SDKType : Swift.RawRepresentable {}
+extension PradoSDK.KPBid.LostReason : Swift.Equatable {}
+extension PradoSDK.KPBid.LostReason : Swift.Hashable {}
+extension PradoSDK.KPBid.LostReason : Swift.RawRepresentable {}
