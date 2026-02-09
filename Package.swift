@@ -17,8 +17,8 @@ let package = Package(
         
         .binaryTarget(
             name: "PradoSDK",
-            url: "https://github.com/Prado-SDK/prado-ios-frameworks/raw/refs/heads/main/PradoSDK/10.1.4/PradoSDK.zip",
-            checksum: "5d70a6c3210397d662d819f45ab334d6da6eb49b7c8cb94b4627cc07bb660d35"
+            url: "https://github.com/Prado-SDK/prado-ios-frameworks/raw/refs/heads/main/PradoSDK/10.1.5/PradoSDK.zip",
+            checksum: "c48fafed9bf38557cd31d78af983ae2e8a2f7ddba4bc7b4c2741aa158e515692"
         )
     ]
 )
